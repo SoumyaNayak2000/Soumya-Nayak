@@ -123,7 +123,7 @@
         "columns": 3,
         "rows": 2,
         "gap": 10,
-        "border_radius": 8,
+        "border_radius": 6,
         "card_height": 300,
         "heading": "ETHICALLY MADE CLOTHES",
         "heading_size": 26,
