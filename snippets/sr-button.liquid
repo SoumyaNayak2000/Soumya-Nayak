@@ -1,0 +1,24 @@
+<a href="{{ section.settings.button_link }}"
+   class="sr-btn sr-btn-{{ section.settings.btn_style }}"
+   style="
+     --btn-bg: {{ section.settings.btn_bg }};
+     --btn-text: {{ section.settings.btn_text_color }};
+     --btn-border: {{ section.settings.btn_border }};
+
+     --btn-hover-bg: {{ section.settings.btn_hover_bg }};
+     --btn-hover-text: {{ section.settings.btn_hover_text }};
+     --btn-hover-border: {{ section.settings.btn_hover_border }};
+   "
+>
+
+  {% if section.settings.button_icon_position == 'left' %}
+    <span class="sr-btn-icon">{{ section.settings.button_icon }}</span>
+  {% endif %}
+
+  <span>{{ section.settings.button_text }}</span>
+
+  {% if section.settings.button_icon_position == 'right' %}
+    <span class="sr-btn-icon">{{ section.settings.button_icon }}</span>
+  {% endif %}
+
+</a>

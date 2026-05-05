@@ -1,0 +1,39 @@
+<div class="sr-footer-menu" style="text-align: {{ section.settings.menu_align }};"> 
+
+  {% if section.settings.menu_1 != blank %}
+    <ul>
+      {% for link in linklists[section.settings.menu_1].links %}
+        <li>
+          <a href="{{ link.url }}"
+             style="
+               color: {{ section.settings.menu_color }};
+               font-size: {{ section.settings.menu_size }}px;
+               font-weight: {{ section.settings.menu_weight }};
+             "
+          >
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if section.settings.menu_2 != blank %}
+    <ul>
+      {% for link in linklists[section.settings.menu_2].links %}
+        <li>
+          <a href="{{ link.url }}"
+             style="
+               color: {{ section.settings.menu_color }};
+               font-size: {{ section.settings.menu_size }}px;
+               font-weight: {{ section.settings.menu_weight }};
+             "
+          >
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+</div>

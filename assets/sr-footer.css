@@ -1,0 +1,136 @@
+.sr-footer {
+  padding: 60px 20px;
+  padding-bottom:20px;
+}
+.sr-footer {
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.sr-footer-inner {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.sr-footer-col {
+  flex: 1;
+}
+
+.sr-footer-col.left { text-align: left; }
+.sr-footer-col.center { text-align: center; }
+.sr-footer-col.right { text-align: right; }
+
+/* LOGO */
+.sr-footer-logo p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* MENU */
+.sr-footer-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sr-footer-menu li {
+  margin-bottom: 8px;
+}
+
+.sr-footer-menu a {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+/* underline animation */
+.sr-footer-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: currentColor;
+  transition: 0.3s;
+}
+
+.sr-footer-menu a:hover::after {
+  width: 100%;
+}
+
+/* CONTACT */
+.sr-footer-contact p {
+  font-size: var(--contact-size);
+  font-weight: var(--contact-weight);
+  color: var(--contact-color);
+  margin: 6px 0;
+}
+.sr-footer-contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.sr-footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* CENTER */
+.sr-footer-contact[style*="center"] {
+  align-items: center;
+}
+/* FOOTER BOTTOM BAR*/
+.sr-footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 13px;
+  opacity: 1;
+}
+
+/* LEFT */
+.sr-footer-bottom-left {
+  letter-spacing: 0.5px;
+}
+
+/* RIGHT */
+.sr-footer-bottom-right {
+  letter-spacing: 0.5px;
+}
+
+/* Highlight name */
+.sr-footer-bottom-right span {
+  font-weight: 500;
+  color: #000000ff;
+  transition: 0.3s;
+}
+
+/* subtle hover */
+.sr-footer-bottom-right span:hover {
+  opacity: 0.8;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .sr-footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+    .sr-footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+
+}

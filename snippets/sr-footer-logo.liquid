@@ -1,0 +1,30 @@
+<div class="sr-footer-logo" style="text-align: {{ section.settings.logo_align }};">
+  {% if section.settings.logo != blank %}
+    <img
+      src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}"
+      alt="Footer logo"
+      style="width: {{ section.settings.logo_width }}px; height: auto;"
+    >
+
+  {% else %}
+    <img
+      src="{{ 'sr-logo.png' | asset_url }}"
+      alt="Default footer logo"
+      style="width: {{ section.settings.logo_width }}px; height: auto;"
+    >
+  {% endif %}
+
+  {% if section.settings.description != blank %}
+    <p
+      class="sr-footer-desc"
+      style="
+        font-size: {{ section.settings.desc_size }}px;
+        font-weight: {{ section.settings.desc_weight }};
+        color: {{ section.settings.desc_color }};
+        text-align: {{ section.settings.desc_align }};
+      "
+    >
+      {{ section.settings.description }}
+    </p>
+  {% endif %}
+</div>

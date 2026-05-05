@@ -1,0 +1,30 @@
+.sr-text-block {
+  width: 100%;
+}
+
+/* WIDTH CONTROL */
+.width-boxed .sr-text-inner {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.width-full .sr-text-inner {
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* TYPOGRAPHY */
+.sr-heading {
+  margin-bottom: 10px;
+}
+
+.sr-description {
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sr-heading {
+    font-size: calc(var(--heading-size, 28px) * 0.8);
+  }
+}

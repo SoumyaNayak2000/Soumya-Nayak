@@ -1,0 +1,168 @@
+/* =========================
+   BASE
+========================= */
+.sr-banner {
+  position: relative;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sr-banner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sr-banner-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+}
+
+/* WIDTH */
+.width-boxed .sr-banner-inner {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.width-full .sr-banner-inner {
+  width: 100%;
+}
+
+/* CONTENT */
+.sr-banner-content {
+  max-width: 500px;
+}
+
+.sr-banner-heading {
+  margin-bottom: 10px;
+}
+
+.sr-banner-desc {
+  margin-bottom: 20px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.sr-banner-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 25px;
+  text-decoration: none;
+  transition: 0.3s;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+}
+
+.sr-banner-btn:hover {
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+  border-color: var(--btn-hover-border);
+}
+
+.sr-banner-btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.btn-slide:hover .sr-banner-btn-icon {
+  transform: translateX(5px);
+}
+
+.btn-scale:hover {
+  transform: scale(1.05);
+}
+
+.btn-invert {
+  background: transparent;
+  color: var(--btn-bg);
+}
+
+/* =========================
+   POSITION SYSTEM
+========================= */
+.content-top-left { align-items: flex-start; justify-content: flex-start; }
+.content-top-center { align-items: flex-start; justify-content: center; }
+.content-top-right { align-items: flex-start; justify-content: flex-end; }
+
+.content-center-left { align-items: center; justify-content: flex-start; }
+.content-center-center { align-items: center; justify-content: center; }
+.content-center-right { align-items: center; justify-content: flex-end; }
+
+.content-bottom-left { align-items: flex-end; justify-content: flex-start; }
+.content-bottom-center { align-items: flex-end; justify-content: center; }
+.content-bottom-right { align-items: flex-end; justify-content: flex-end; }
+
+/* =========================
+   MOBILE (FINAL CLEAN VERSION)
+========================= */
+@media (max-width: 768px) {
+
+  /* BANNER */
+  #shopify-section-{{ section.id }} .sr-banner {
+    height: auto !important;
+    padding: 10px 20px 20px;
+
+    /* IMAGE CONTROL */
+    background-size: contain !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat !important;
+
+    flex-direction: column;
+  }
+
+  /* REMOVE OVERLAY */
+  #shopify-section-{{ section.id }} .sr-banner-overlay {
+    display: none;
+  }
+
+  /* CONTENT ALIGNMENT */
+  #shopify-section-{{ section.id }} .sr-banner-inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .sr-banner-content {
+    max-width: 100%;
+  }
+
+  /* TYPOGRAPHY */
+  #shopify-section-{{ section.id }} .sr-banner-heading {
+    font-size: 26px !important;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .sr-banner-desc {
+    font-size: 14px !important;
+    margin-bottom: 40px;
+  }
+
+  /* BUTTON */
+  #shopify-section-{{ section.id }} .sr-banner-btn {
+    display: inline-flex;
+    margin: 10px auto 30px;
+    padding: 14px 28px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-border);
+  }
+    #shopify-section-{{ section.id }} .sr-banner-btn:hover {
+    background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
+  border-color: var(--btn-hover-border);
+  }
+
+
+  .sr-banner-btn-wrapper {
+    width: 100%;
+    text-align: center;
+  }
+
+}

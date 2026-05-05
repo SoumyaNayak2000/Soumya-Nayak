@@ -1,0 +1,16 @@
+<div 
+  class="product-card"
+  data-handle="{{ product.handle }}"
+  style="
+    border-radius: {{ section.settings.border_radius }}px;
+    overflow: hidden;
+    height: {{ section.settings.card_height }}px;
+  "
+>
+  <img 
+    src="{{ product.featured_image | image_url: width: 600 }}"
+    alt="{{ product.title }}"
+    loading="lazy"
+    style="height: 100%; width: 100%; object-fit: cover;"
+  >
+</div>

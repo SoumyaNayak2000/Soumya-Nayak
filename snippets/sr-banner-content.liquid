@@ -1,0 +1,34 @@
+<div
+  class="sr-banner-content"
+  style="
+        padding: {{ section.settings.padding_top }}px
+    {{ section.settings.padding_right }}px
+    {{ section.settings.padding_bottom }}px
+    {{ section.settings.padding_left }}px;
+  "
+>
+  <h1
+    class="sr-banner-heading"
+    style="
+      font-size: {{ section.settings.heading_size }}px;
+      color: {{ section.settings.heading_color }};
+      font-weight: {{ section.settings.heading_weight }};
+    "
+  >
+    {{ section.settings.heading }}
+  </h1>
+
+  <p
+    class="sr-banner-desc"
+    style="
+      font-size: {{ section.settings.desc_size }}px;
+      color: {{ section.settings.desc_color }};
+    "
+  >
+    {{ section.settings.text }}
+  </p>
+
+  <div class="sr-banner-btn-wrapper">
+    {% render 'sr-banner-button', section: section %}
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{% comment %}
+  Show uploaded logo if available,
+  otherwise fallback to default logo from assets
+{% endcomment %}
+
+<div class="sr-logo">
+  {% if section.settings.logo != blank %}
+
+    {{ section.settings.logo 
+      | image_url: width: section.settings.logo_width 
+      | image_tag }}
+
+  {% else %}
+
+    <img 
+      src="{{ 'sr-logo.png' | asset_url }}" 
+      alt="Default logo"
+      style="width: {{ section.settings.logo_width }}px; height: auto;"
+    >
+
+  {% endif %}
+</div>

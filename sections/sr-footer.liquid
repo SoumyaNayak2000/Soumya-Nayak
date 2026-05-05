@@ -1,0 +1,296 @@
+{{ 'sr-footer.css' | asset_url | stylesheet_tag }}
+
+<footer
+  class="sr-footer width-{{ section.settings.footer_width }}"
+  style="background: {{ section.settings.bg_color }};"
+>
+  <div class="sr-footer-inner" style="max-width: {{ section.settings.boxed_width }}px;">
+    {% render 'sr-footer-col', position: 'left', section: section %}
+    {% render 'sr-footer-col', position: 'center', section: section %}
+    {% render 'sr-footer-col', position: 'right', section: section %}
+  </div>
+<div class="sr-footer-bottom">
+  
+  <div class="sr-footer-bottom-left">
+    © {{ 'now' | date: "%Y" }} ECOMEXPERTS. All rights reserved.
+  </div>
+
+  <div class="sr-footer-bottom-right">
+    Developed by <span>Soumya Ranjan Nayak</span>
+  </div>
+
+</div>
+</footer>
+
+<style>
+  .sr-footer {
+    --menu-hover-color: {{ section.settings.menu_hover_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "SR Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "footer_width",
+      "label": "Footer Width",
+      "options": [
+        { "value": "full", "label": "Full Width" },
+        { "value": "boxed", "label": "Boxed" }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "range",
+      "id": "boxed_width",
+      "label": "Boxed Width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "default": 1200
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#111111"
+    },
+
+    {
+      "type": "header",
+      "content": "Logo & Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 150
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "range",
+      "id": "desc_size",
+      "label": "Font Size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "desc_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "range",
+      "id": "menu_size",
+      "label": "Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "menu_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "menu_color",
+      "label": "Text Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "menu_hover_color",
+      "label": "Hover Color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "header",
+      "content": "Menus"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Menu 1"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Menu 2"
+    },
+
+    {
+      "type": "header",
+      "content": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address"
+    },
+    {
+      "type": "range",
+      "id": "contact_size",
+      "label": "Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "contact_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "contact_color",
+      "label": "Text Color",
+      "default": "#cccccc"
+    },
+
+    {
+      "type": "header",
+      "content": "Positions"
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "menu_position",
+      "label": "Menu Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "contact_position",
+      "label": "Contact Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "logo_align",
+      "label": "Logo Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "desc_align",
+      "label": "Description Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "menu_align",
+      "label": "Menu Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "contact_align",
+      "label": "Contact Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SR Footer"
+    }
+  ]
+}
+{% endschema %}

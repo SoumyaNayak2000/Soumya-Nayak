@@ -1,0 +1,244 @@
+{% comment %}
+  SECTION: Product Grid with Popup
+{% endcomment %}
+
+{{ 'product-grid.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-popup.js' | asset_url }}" defer></script>
+
+<section
+  class="product-grid-section width-{{ section.settings.section_width }}"
+  style="
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  "
+>
+  {% comment %} Overlay Background {% endcomment %}
+  {% if section.settings.enable_overlay %}
+    <div
+      class="section-overlay"
+      style="background: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity }};"
+    ></div>
+  {% endif %}
+
+  <div class="section-inner">
+    {% if section.settings.heading != blank %}
+      <h2
+        class="section-heading"
+        style="
+          font-size: {{ section.settings.heading_size }}px;
+          color: {{ section.settings.heading_color }};
+          text-align: {{ section.settings.heading_align }};
+          font-weight: {{ section.settings.heading_weight }};
+        "
+      >
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div
+      class="product-grid"
+      style="
+        grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+        gap: {{ section.settings.gap }}px;
+      "
+    >
+      {% assign total = section.settings.columns | times: section.settings.rows %}
+
+      {% comment %} Render products via snippet {% endcomment %}
+      {% for block in section.blocks limit: total %}
+        {% assign product = all_products[block.settings.product] %}
+        {% if product %}
+          {% render 'product-card', product: product %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% comment %} Popup Snippet {% endcomment %}
+  {% render 'product-popup' %}
+</section>
+
+<div id="sr-floating-cart" class="sr-floating-cart hidden">
+  <a href="/cart">
+    🛒 <span id="sr-cart-count">0</span>
+  </a>
+</div>
+
+<div id="sr-toast" class="sr-toast">
+  <span class="sr-toast-msg"></span>
+  <a href="/cart" class="sr-toast-link">View Cart →</a>
+</div>
+
+{% schema %}
+{
+  "name": "Product Grid Popup",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "options": [
+        { "value": "full", "label": "Full Width" },
+        { "value": "boxed", "label": "Boxed" }
+      ],
+      "default": "boxed"
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 50
+    },
+
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "enable_overlay",
+      "label": "Enable Overlay",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.3
+    },
+
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 2,
+      "max": 4,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": "Rows",
+      "min": 1,
+      "max": 4,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Grid Gap",
+      "min": 5,
+      "max": 40,
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Card Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "label": "Card Height",
+      "min": 150,
+      "max": 500,
+      "step": 10,
+      "default": 250
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Our Products"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Font Size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Product Grid Popup"
+    }
+  ]
+}
+{% endschema %}

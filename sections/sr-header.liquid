@@ -1,0 +1,294 @@
+{{ 'sr-header.css' | asset_url | stylesheet_tag }}
+
+<!-- Main Header -->
+<header
+  class="sr-header width-{{ section.settings.header_width }}"
+  style="background: {{ section.settings.bg_color }};"
+>
+  <div
+    class="sr-header-inner"
+    style="max-width: {{ section.settings.boxed_width }}px;"
+  >
+
+    <!-- Mobile hamburger icon -->
+    <div class="sr-mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Header sections -->
+    {% render 'sr-header-col', position: 'left', section: section %}
+    {% render 'sr-header-col', position: 'center', section: section %}
+    {% render 'sr-header-col', position: 'right', section: section %}
+
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="sr-mobile-menu">
+  
+  <!-- Top section with close + logo -->
+  <div class="sr-mobile-top">
+    <span class="sr-close">✕</span>
+    <div class="sr-mobile-logo">
+      {% render 'sr-logo', section: section %}
+    </div>
+  </div>
+
+  <!-- CTA button -->
+  <div class="sr-mobile-cta">
+    {% render 'sr-button', section: section %}
+  </div>
+
+</div>
+
+<script>
+  // Select elements
+  const toggle = document.querySelector('.sr-mobile-toggle');
+  const menu = document.querySelector('.sr-mobile-menu');
+  const closeBtn = document.querySelector('.sr-close');
+
+  // Open mobile menu
+  toggle.addEventListener('click', () => {
+    menu.classList.add('active');
+  });
+
+  // Close mobile menu
+  closeBtn.addEventListener('click', () => {
+    menu.classList.remove('active');
+  });
+</script>
+
+{% schema %}
+{
+  "name": "SR Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "header_width",
+      "label": "Header Width",
+      "options": [
+        { "value": "full", "label": "Full Width" },
+        { "value": "boxed", "label": "Boxed" }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "range",
+      "id": "boxed_width",
+      "label": "Boxed Width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "default": 1200
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 150
+    },
+
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+    },
+
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Contact"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "btn_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "slide", "label": "Slide" },
+        { "value": "scale", "label": "Scale" },
+        { "value": "invert", "label": "Invert" }
+      ],
+      "default": "slide"
+    },
+
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "Button Border",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Hover Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Hover Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Hover Border",
+      "default": "#000000"
+    },
+
+    {
+      "type": "select",
+      "id": "button_icon",
+      "label": "Button Icon",
+      "options": [
+        { "value": "→", "label": "Arrow" },
+        { "value": "➜", "label": "Arrow Bold" },
+        { "value": "★", "label": "Star" },
+        { "value": "✓", "label": "Check" }
+      ],
+      "default": "→"
+    },
+    {
+      "type": "select",
+      "id": "button_icon_position",
+      "label": "Icon Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+
+    {
+      "type": "header",
+      "content": "Tagline"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "select",
+      "id": "tagline_position",
+      "label": "Tagline Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "tagline_color",
+      "label": "Tagline Color",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "tagline_size",
+      "label": "Tagline Font Size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 13
+    },
+
+    {
+      "type": "header",
+      "content": "Positions"
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "menu_position",
+      "label": "Menu Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "button_position",
+      "label": "Button Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SR Header"
+    }
+  ]
+}
+{% endschema %}

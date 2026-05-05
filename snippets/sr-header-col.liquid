@@ -1,0 +1,19 @@
+<div class="sr-col {{ position }}">
+
+  {% if section.settings.logo_position == position %}
+    {% render 'sr-logo', section: section %}
+  {% endif %}
+
+  {% if section.settings.menu_position == position %}
+    {% render 'sr-menu', section: section %}
+  {% endif %}
+
+  {% if section.settings.tagline_position == position %}
+    {% render 'sr-tagline', section: section %}
+  {% endif %}
+
+  {% if section.settings.button_position == position %}
+    {% render 'sr-button', section: section %}
+  {% endif %}
+
+</div>

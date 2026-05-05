@@ -1,0 +1,11 @@
+{% if section.settings.tagline != blank %}
+  <p 
+    class="sr-tagline"
+    style="
+      color: {{ section.settings.tagline_color }};
+      font-size: {{ section.settings.tagline_size }}px;
+    "
+  >
+    {{ section.settings.tagline }}
+  </p>
+{% endif %}

@@ -1,0 +1,22 @@
+<div 
+  class="sr-footer-contact"
+  style="
+    --contact-size: {{ section.settings.contact_size }}px;
+    --contact-weight: {{ section.settings.contact_weight }};
+    --contact-color: {{ section.settings.contact_color }};
+    text-align: {{ section.settings.contact_align }};
+    align-items: {{ section.settings.contact_align }};
+  "
+>
+  {% if section.settings.phone != blank %}
+    <p>📞 {{ section.settings.phone }}</p>
+  {% endif %}
+
+  {% if section.settings.email != blank %}
+    <p>✉️ {{ section.settings.email }}</p>
+  {% endif %}
+
+  {% if section.settings.address != blank %}
+    <p>📍 {{ section.settings.address }}</p>
+  {% endif %}
+</div>

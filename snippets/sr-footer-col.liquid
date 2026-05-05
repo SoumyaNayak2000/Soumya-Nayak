@@ -1,0 +1,15 @@
+<div class="sr-footer-col {{ position }}">
+
+  {% if section.settings.logo_position == position %}
+    {% render 'sr-footer-logo', section: section %}
+  {% endif %}
+
+  {% if section.settings.menu_position == position %}
+    {% render 'sr-footer-menu', section: section %}
+  {% endif %}
+
+  {% if section.settings.contact_position == position %}
+    {% render 'sr-footer-contact', section: section %}
+  {% endif %}
+
+</div>

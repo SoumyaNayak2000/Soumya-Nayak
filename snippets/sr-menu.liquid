@@ -1,0 +1,5 @@
+<nav class="sr-menu">
+  {% for link in linklists[section.settings.menu].links %}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  {% endfor %}
+</nav>
