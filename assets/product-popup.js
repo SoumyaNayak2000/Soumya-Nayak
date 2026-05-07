@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <div class="sr-popup-info">
         <h2 class="sr-popup-title">${product.title}</h2>
-        <p class="sr-popup-price">₹${product.variants[0].price / 100}</p>
+        <p class="sr-popup-price">$${product.variants[0].price / 100}CAD</p>
 
         <div class="sr-popup-desc">
           ${product.description}
