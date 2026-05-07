@@ -49,7 +49,7 @@
       {% for block in section.blocks limit: total %}
         {% assign product = all_products[block.settings.product] %}
         {% if product %}
-          {% render 'product-card', product: product %}
+          {% render 'product-card', product: product, block: block, section: section %}
         {% endif %}
       {% endfor %}
     </div>
@@ -230,6 +230,46 @@
           "type": "product",
           "id": "product",
           "label": "Select Product"
+        },
+        {
+          "type": "range",
+          "id": "icon_top",
+          "label": "Hotspot Top Position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "icon_left",
+          "label": "Hotspot Left Position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "popup_top",
+          "label": "Popup Top Position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 60,
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "popup_left",
+          "label": "Popup Left Position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50,
+          "unit": "%"
         }
       ]
     }

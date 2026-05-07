@@ -1,4 +1,4 @@
-<div 
+<div
   class="product-card"
   data-handle="{{ product.handle }}"
   style="
@@ -7,10 +7,47 @@
     height: {{ section.settings.card_height }}px;
   "
 >
-  <img 
+  <!-- Product Image -->
+  <img
     src="{{ product.featured_image | image_url: width: 600 }}"
     alt="{{ product.title }}"
     loading="lazy"
     style="height: 100%; width: 100%; object-fit: cover;"
   >
+
+  <!-- Hotspot Button -->
+  <button
+    class="sr-hotspot-btn"
+    style="
+      top: {{ block.settings.icon_top }}%;
+      left: {{ block.settings.icon_left }}%;
+    "
+  >
+    +
+  </button>
+
+  <!-- Mini Popup -->
+  <div
+    class="sr-mini-popup"
+    style="
+      top: {{ block.settings.popup_top }}%;
+      left: {{ block.settings.popup_left }}%;
+    "
+  >
+    <div class="sr-mini-popup-inner">
+      <!-- Product Image -->
+      <div class="sr-mini-popup-image">
+        <img
+          src="{{ product.featured_image | image_url: width: 120 }}"
+          alt="{{ product.title }}"
+        >
+      </div>
+
+      <!-- Product Info -->
+      <div class="sr-mini-popup-info">
+        <h4>{{ product.title }}</h4>
+        <p>{{ product.price | money }}</p>
+      </div>
+    </div>
+  </div>
 </div>

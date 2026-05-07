@@ -4,19 +4,16 @@
 {% endcomment %}
 
 <div class="sr-logo">
-  {% if section.settings.logo != blank %}
+  <a href="/" aria-label="Go to homepage">
+    {% if section.settings.logo != blank %}
+      {{ section.settings.logo | image_url: width: section.settings.logo_width | image_tag }}
 
-    {{ section.settings.logo 
-      | image_url: width: section.settings.logo_width 
-      | image_tag }}
-
-  {% else %}
-
-    <img 
-      src="{{ 'sr-logo.png' | asset_url }}" 
-      alt="Default logo"
-      style="width: {{ section.settings.logo_width }}px; height: auto;"
-    >
-
-  {% endif %}
+    {% else %}
+      <img
+        src="{{ 'sr-logo.png' | asset_url }}"
+        alt="Default logo"
+        style="width: {{ section.settings.logo_width }}px; height: auto;"
+      >
+    {% endif %}
+  </a>
 </div>
