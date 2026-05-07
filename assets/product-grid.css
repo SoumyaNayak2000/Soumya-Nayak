@@ -272,59 +272,138 @@
 }
 
 /* ===============================
+   POPUP FIELD LABELS
+=================================*/
+.sr-popup-field label {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 16px;
+  font-weight: 400;
+  color: #111;
+}
+
+/* ===============================
    COLOR OPTIONS
 =================================*/
 .sr-color-options {
   display: flex;
-  border: 1px solid #ccc;
-  overflow: hidden;
+  border: 1px solid #bdbdbd;
 }
 
 .sr-color-btn {
   flex: 1;
-  padding: 12px;
+
+  height: 44px;
+
   background: #fff;
   border: none;
-  cursor: pointer;
+
   font-size: 14px;
-  transition: 0.2s;
+  font-weight: 400;
+  color: #111;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
 }
 
+/* Divider */
 .sr-color-btn:not(:last-child) {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #bdbdbd;
 }
 
+/* Active State */
 .sr-color-btn.active {
   background: #000;
   color: #fff;
 }
 
-/* ===============================
-   SIZE DROPDOWN
-=================================*/
-.sr-select-wrapper {
-  border: 1px solid #ccc;
-  position: relative;
+/* Hover */
+.sr-color-btn:hover {
+  background: #111;
+  color: #fff;
 }
 
+/* ===============================
+   SIZE SELECT
+=================================*/
+.sr-select-wrapper {
+  position: relative;
+  border: 1px solid #bdbdbd;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+
+  background: #fff;
+}
+
+/* Select */
 .sr-popup-select {
   width: 100%;
-  padding: 14px;
+  height: 100%;
+
+  padding: 0 55px 0 16px;
+
   border: none;
   outline: none;
+
   appearance: none;
-  background: #fff;
-  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: transparent;
+
+  font-size: 16px;
+  font-weight: 400;
+  color: #111;
+
   cursor: pointer;
 }
 
-.sr-select-wrapper::after {
-  content: "⌄";
+/* Arrow Area */
+.sr-select-wrapper::before {
+  content: "";
+
   position: absolute;
-  right: 15px;
+  top: 0;
+  right: 54px;
+
+  width: 1px;
+  height: 100%;
+
+  background: #bdbdbd;
+}
+
+/* Arrow */
+.sr-select-wrapper::after {
+  content: "";
+
+  position: absolute;
+  right: 20px;
   top: 50%;
-  transform: translateY(-50%);
+
+  width: 10px;
+  height: 10px;
+
+  border-right: 1.5px solid #111;
+  border-bottom: 1.5px solid #111;
+
+  transform: translateY(-70%) rotate(45deg);
+
   pointer-events: none;
+}
+
+/* Placeholder */
+.sr-popup-select option[disabled] {
+  color: #777;
 }
 
 /* ===============================
@@ -471,5 +550,17 @@
 
   .section-heading {
     padding-left: 15px;
+  }
+
+  .sr-popup-field label {
+    font-size: 14px;
+  }
+
+  .sr-popup-select {
+    font-size: 14px;
+  }
+
+  .sr-color-btn {
+    font-size: 13px;
   }
 }
